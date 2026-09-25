@@ -20,12 +20,16 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: radial-gradient(1200px 800px at 80% -10%, #2a2350 0%, transparent 60%),
-              radial-gradient(1000px 700px at -10% 20%, #1a2b48 0%, transparent 55%),
-              var(--bg);
   color: var(--text);
   line-height: 1.65;
   min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.3), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(255, 126, 179, 0.15), transparent),
+    radial-gradient(ellipse 50% 30% at 20% 30%, rgba(94, 234, 212, 0.12), transparent),
+    radial-gradient(ellipse 100% 60% at 50% 100%, rgba(139, 123, 247, 0.1), transparent),
+    linear-gradient(180deg, #0a0b1a 0%, #0f1120 40%, #131628 100%);
+  background-attachment: fixed;
 }
 
 .container { max-width: 900px; margin: 0 auto; padding: 0 1.25rem; }
