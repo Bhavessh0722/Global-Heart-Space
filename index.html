@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Global Heart Space - A safe, anonymous space for adults 18+ to share their untold thoughts, dreams, and emotions." />
+  <title>Global Heart Space — Share Your Truth Anonymously</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Age Gate Modal -->
+  <div id="ageGate" class="age-gate">
+    <div class="age-gate-card">
+      <div class="age-gate-icon">🌍</div>
+      <h2>Welcome to Global Heart Space</h2>
+      <p>A safe, anonymous space for adults to share what they cannot say elsewhere.</p>
+      <p class="age-gate-notice">This platform is for individuals aged <strong>18 and above</strong>.</p>
+      <div class="age-gate-buttons">
+        <button id="ageYes" class="btn btn-primary">I am 18 or older — Enter</button>
+        <button id="ageNo" class="btn btn-ghost">I am under 18</button>
+      </div>
+      <p id="ageDenied" class="age-denied" hidden>
+        We're sorry. This space is reserved for adults. If you're struggling, please talk to a trusted adult or a local helpline.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <main id="app" hidden>
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-emoji">🌍</span>
+          <div>
+            <h1>Global Heart Space</h1>
+            <p class="tagline">Your safe place to share & heal</p>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#share">Share</a>
+          <a href="#wall">The Wall</a>
+          <a href="#support">Support</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero / Mission -->
+    <section class="hero">
+      <div class="container">
+        <h2 class="hero-title">You are not alone.</h2>
+        <p class="hero-sub">
+          This is a space for every person — every language, every background — to release
+          the thoughts, dreams, desires, and emotions they've never been able to tell anyone.
+          No names. No judgment. Just being heard.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">🔒 100% Anonymous</span>
+          <span class="badge">🌐 Any Language</span>
+          <span class="badge">💗 Judgment-Free</span>
+          <span class="badge">🛡️ Moderated Safely</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Share Section -->
+    <section id="share" class="section container">
+      <div class="card">
+        <h3 class="card-title">Release what's inside</h3>
+        <p class="card-sub">Write freely. Your words will be shared anonymously with the world — never linked to you.</p>
+
+        <form id="shareForm" class="share-form">
+          <label for="message" class="sr-only">Your message</label>
+          <textarea
+            id="message"
+            name="message"
+            maxlength="1500"
+            minlength="20"
+            placeholder="Write from your heart... Whatever you've never been able to say. (Min 20 characters)"
+            required
+          ></textarea>
+
+          <div class="form-row">
+            <div class="mood-picker">
+              <span class="mood-label">How does it feel?</span>
+              <div class="mood-options" role="radiogroup" aria-label="Mood">
+                <button type="button" class="mood" data-mood="sad">😔 Sad</button>
+                <button type="button" class="mood" data-mood="angry">😠 Angry</button>
+                <button type="button" class="mood" data-mood="hopeful">🌱 Hopeful</button>
+                <button type="button" class="mood" data-mood="lost">🌀 Lost</button>
+                <button type="button" class="mood" data-mood="grateful">🙏 Grateful</button>
+              </div>
+            </div>
+            <span id="charCount" class="char-count">0 / 1500</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              Release & Be Heard
+            </button>
+            <button type="button" class="btn btn-ghost" id="clearBtn">Clear</button>
+          </div>
+        </form>
+
+        <p class="safety-note">
+          ⚠️ For your safety: Do not include names, phone numbers, addresses, or anything identifying.
+        </p>
+      </div>
+    </section>
+
+    <!-- Wall of Shared Truths -->
+    <section id="wall" class="section container">
+      <div class="wall-header">
+        <h3 class="card-title">The Wall of Shared Truths</h3>
+        <p class="card-sub">Anonymous words from hearts around the world. You are not alone.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="sad">😔 Sad</button>
+        <button class="filter" data-filter="angry">😠 Angry</button>
+        <button class="filter" data-filter="hopeful">🌱 Hopeful</button>
+        <button class="filter" data-filter="lost">🌀 Lost</button>
+        <button class="filter" data-filter="grateful">🙏 Grateful</button>
+      </div>
+
+      <div id="wallContainer" class="wall">
+        <!-- posts injected by JS -->
+      </div>
+
+      <div class="wall-actions">
+        <button id="loadMore" class="btn btn-ghost" hidden>Load more</button>
+      </div>
+    </section>
+
+    <!-- Support -->
+    <section id="support" class="section container">
+      <div class="card support-card">
+        <h3 class="card-title">You deserve support 💗</h3>
+        <p class="card-sub">
+          Sharing is powerful — but you don't have to carry everything alone.
+          If you're in crisis or need someone to talk to, please reach out to a professional or helpline.
+        </p>
+        <ul class="support-list">
+          <li><strong>International:</strong> <a href="https://findahelpline.com/" target="_blank" rel="noopener">findahelpline.com</a></li>
+          <li><strong>USA:</strong> Call or text <strong>988</strong> (Suicide & Crisis Lifeline)</li>
+          <li><strong>UK:</strong> Call <strong>116 123</strong> (Samaritans)</li>
+          <li><strong>India:</strong> <strong>AASRA</strong> — 91-9820466726</li>
+          <li><strong>Anywhere:</strong> If you are in immediate danger, call your local emergency number.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>💌 You matter. Your voice matters. We're listening.</p>
+        <p class="footer-small">
+          Global Heart Space is an anonymous peer expression platform, not a therapy or emergency service.
+          By using this site you agree to be respectful, avoid harmful content, and seek professional help when needed.
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
